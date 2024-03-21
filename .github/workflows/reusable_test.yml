@@ -12,12 +12,23 @@ on:
 jobs:
   run_tests:
     runs-on: ubuntu-20.04
+    container:
+      image: ubuntu:22.04
 
     steps:
+      - name: Install basic tools
+        run: |
+          apt-get -y update
+          apt-get --allow-releaseinfo-change update
+          apt-get -y install sudo git curl gcc make cmake unzip \
+          zip gawk cpio pkg-config build-essential ninja-build \
+          liblz4-dev autoconf automake libtool lsb-release rsync libunwind-dev \
+        shell: bash
+
       - name: Clone the ddl module
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.repository_owner }}/ddl
+          repository: ${{ github.repository_owner }}/ddl-ee
 
       - name: Download the Tarantool build artifact
         uses: actions/download-artifact@v4
