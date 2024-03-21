@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        tarantool: ['1.10', '2.5', '2.6', '2.7', '2.8', '2.10', '2.11']
+        tarantool: ['1.10', '2.10', '2.11']
 
     runs-on: ubuntu-20.04
     container:
@@ -64,7 +64,7 @@ jobs:
       matrix:
         tarantool: ['2.11']
 
-    runs-on: [self-hosted, Linux, x86_64, regular]
+    runs-on: ubuntu-20.04
     container:
       image: ubuntu:22.04
 
